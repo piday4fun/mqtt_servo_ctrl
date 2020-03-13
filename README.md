@@ -5,13 +5,13 @@ Uses smart servo from MemeRobotics.
 
 ## 1. mqtt_client
 
-Read interval from MQTT server and print it.
+Reads interval from MQTT server and print it.
 
 ## 2. servo_ctrl
 
-Reads interval in float format in range (0, 10] from stdin, then maps it to servo position.
+Reads interval in float syntax in range (0, 10] from stdin, then maps it to servo position.
 
-## how to build
+## How To Build
 
 ```SHELL
 cd servo_ctrl
