@@ -21,7 +21,7 @@ cmake -G"Unix Makefiles" ..
 make
 ```
 
-## Run
+## 3. Run
 
 ```SHELL
 python mqtt_client.py|servo_ctrl
