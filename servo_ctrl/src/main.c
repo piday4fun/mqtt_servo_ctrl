@@ -5,10 +5,10 @@
 #include <errno.h>
 #include <time.h>
 #include <fcntl.h>
-#include "serial_opt.h"
 #include <sys/select.h>
 #include <sys/types.h>
 
+#include "serial_opt.h"
 #include "MemeServoAPI.h"
 
 

@@ -77,8 +77,6 @@ int serial_set_speed(int fd, int speed)
         }
     }
 
-    
-
     if (i < sizeof(_serial_baudrates) / sizeof(_serial_baudrates[0]))
     {
         tcflush(fd, TCIOFLUSH);
@@ -152,12 +150,6 @@ int serial_set_format(int fd, int databits, int stopbits, char parity)
         options.c_cflag &= ~PARODD;
         options.c_iflag |= INPCK; /* Disable parity checking */
         break;
-    case 'S':
-    case 's':
-        /* Stop as parity? */
-        options.c_cflag &= ~PARENB;
-        options.c_cflag &= ~CSTOPB;
-        break;
     default:
         fprintf(stderr, "Unsupported parity\n");
         return (SERIAL_RET_FAILED);
@@ -182,7 +174,7 @@ int serial_set_format(int fd, int databits, int stopbits, char parity)
 
     tcflush(fd, TCIFLUSH);
     options.c_cc[VTIME] = 10; /* specifies the time to wait until the characters is received. [VTIME] = 0 to wait indefinitely */
-    options.c_cc[VMIN] = 0;    /* specifies the minimum number of characters that should be read before the read() call returns*/
+    options.c_cc[VMIN] = 0;   /* specifies the minimum number of characters that should be read before the read() call returns*/
 
     if (tcsetattr(fd, TCSANOW, &options) != 0)
     {
