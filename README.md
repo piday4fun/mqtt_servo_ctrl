@@ -1,6 +1,6 @@
 # MQTT servo control
 
-Read interval from MQTT servo and move servo according to the value.
+Reads interval from MQTT servo and moves servo according to the value.
 Uses smart servo from MemeRobotics.
 
 ## 1. mqtt_client
