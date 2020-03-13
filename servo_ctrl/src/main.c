@@ -8,12 +8,9 @@
 #include "serial_opt.h"
 #include <sys/select.h>
 #include <sys/types.h>
-// #include <sys/stat.h>
-// #include <termios.h>
 
 #include "MemeServoAPI.h"
 
-// #define BUF_SIZE 512
 
 #define MASTER_ADDR 0x01
 #define SERVO_ADDR 0x03
@@ -127,31 +124,6 @@ int main()
         printf("Set parity error\n");
         exit(0);
     }
-
-    // tcgetattr(serial_fd, &options); /* 获取opt指针 */
-    // cfsetispeed(&options, B115200); /* set bps in */
-    // cfsetospeed(&options, B115200); /* set bps out */
-
-    // options.c_cflag |= (CLOCAL | CREAD); /* enable date receiver */
-    // options.c_cflag &= ~PARENB;          /* 没有校验 */
-    // options.c_cflag &= ~CRTSCTS;         /* 没有数据流 */
-    // options.c_cflag &= ~CSTOPB;          /* 关闭两位停止位，就是一位停止位 */
-    // options.c_cflag &= ~CSIZE;           /* 设置数据位宽时打开掩码 */
-    // options.c_cflag |= CS8;              /* 8位数据位 */
-
-    // /* 关闭ICRNL IXON 防止0x0d 0x11 0x13的过滤 */
-    // options.c_iflag &= ~(IXON | IXOFF | IXANY);
-    // options.c_iflag &= ~(INLCR | ICRNL | IGNCR);
-    // options.c_oflag &= ~(ONLCR | OCRNL);
-    // options.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
-
-    // options.c_oflag &= ~OPOST; /* 使用原始数据 */
-
-    // /* 只有阻塞时，下面两个才有效，且针对读 */
-    // options.c_cc[VMIN] = 0;  /* 最小字节数（读）*/
-    // options.c_cc[VTIME] = 1; /* 等待时间，单位百毫秒 */
-
-    // tcsetattr(serial_fd, TCSANOW, &options); /* 写入options */
 
     /* Initialize servo interface */
     MMS_SetProtocol(MMS_PROTOCOL_UART, MASTER_ADDR, send_data_impl, recv_data_impl);
