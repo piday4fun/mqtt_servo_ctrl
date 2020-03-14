@@ -122,7 +122,7 @@ int main()
     if (serial_set_format(serial_fd, 8, 1, 'N') != SERIAL_RET_SUCCESS)
     {
         printf("Set parity error\n");
-        exit(0);
+        exit(-1);
     }
 
     /* Initialize servo interface */
@@ -136,7 +136,7 @@ int main()
     {
         printf("Scaning servo 0x%02x\n", servo_addr);
 
-        if ((ret = MMS_StartServo(servo_addr, MMS_MODE_ZERO, servo_err_callback)) != MMS_RESP_SUCCESS)
+        if ((ret = MMS_StartServo(servo_addr, MMS_MODE_ZERO, servo_err_callback)) != MMS_RESP_TIMEOUT)
         {
             // printf("MMS_StartServo(0x%02x) failed, ret=0x%02x\n", servo_addr, ret);
         }
